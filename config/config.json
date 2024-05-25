@@ -1,0 +1,69 @@
+{
+  "local": {
+    "username": "local-username",
+    "password": "local-password",
+    "database": "local-dbname",
+    "host": "localhost",
+    "port":"5432",
+    "dialect": "postgres",    
+    "define":{
+      "freezeTableName":true, 
+      "underscored": true,
+      "timestamps":false
+    },
+    "logging":"console.log"
+  },
+  "testing": {
+    "username": "testing-username",
+    "password": "testing-password",
+    "database": "testing-dbname",
+    "host": "testing-host",
+    "port":"testing-port",
+    "dialect": "postgres",    
+    "define":{
+      "freezeTableName":true, 
+      "underscored": true,
+      "timestamps":false
+    }
+  },
+
+  "development": {
+    "username": "dev-username",
+    "password": "dev-password",
+    "database": "dev-dbname",
+    "host": "dev-host",
+    "port":"dev-port",
+    "dialect": "postgres",    
+    "define":{
+      "freezeTableName":true, 
+      "underscored": true,
+      "timestamps":false
+    }
+  },
+  "test": {
+    "username": "test-username",
+    "password": "test-password",
+    "database": "test-dbname",
+    "host": "test-host",
+    "port":"test-port",
+    "dialect": "postgres",    
+    "define":{
+      "freezeTableName":true, 
+      "underscored": true,
+      "timestamps":false
+    }
+  },
+  "production": {
+    "username": "prod-username",
+    "password": "prod-password",
+    "database": "prod-dbname",
+    "host": "prod-host",
+    "port":"prod-port",
+    "dialect": "postgres",    
+    "define":{
+      "freezeTableName":true, 
+      "underscored": true,
+      "timestamps":false
+    }
+  }
+}

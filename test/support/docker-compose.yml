@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres
+    container_name: atmarket-db-testing
+    ports:
+      - "${DB_PORT}:5432"
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_DB=${DB_NAME}
+  flyway:
+    image: flyway/flyway:latest
+    command: -configFiles=conf/flyway.conf migrate
+    volumes:
+      - ./migrations:/flyway/conf
+      - ../../support/migrations/sql:/flyway/sql
+    depends_on:
+      - postgres
+    links:
+      - postgres:testingdb

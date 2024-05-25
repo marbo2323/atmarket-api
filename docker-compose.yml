@@ -1,0 +1,37 @@
+services:
+  postgres:
+    image: postgres
+    container_name: atmarket-db-local
+    ports:
+      - "55432:5432"
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_DB=${DB_NAME}
+    
+  minio:
+    image: minio/minio:latest
+    volumes:
+      - ./support/minio/data:/data
+    ports:
+      - "9002:9000"
+      - "9003:9001"
+    environment:
+      MINIO_ROOT_USER: "ROOTUSER" 
+      MINIO_ROOT_PASSWORD: "CHANGEME123"
+    command: server /data --console-address ":9001"
+
+  flyway:
+    image: flyway/flyway:latest
+    command: -configFiles=conf/flyway.conf migrate
+    volumes:
+      - ./support/migrations/conf:/flyway/conf
+      - ./support/migrations/sql:/flyway/sql
+    depends_on:
+      - postgres
+    links:
+      - postgres:atmarketdb
+
+
+
+
